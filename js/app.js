@@ -16,8 +16,8 @@ const dispFundTotal = document.getElementById('fundTotal');
 const dispLength = document.getElementById('monthsLasting');
 
 const calcButton = document.getElementById('calculate');
-const inputs = document.getElementsByClassName('expenses');
-const expenseInputs = [...inputs];
+const allInputs = document.querySelectorAll('input');
+const inputs = [...allInputs];
 
 const fundLengthInput = document.getElementById('fundLength');
 const housingInput = document.getElementById('rentHousing');
@@ -44,12 +44,11 @@ dispFundTotal.innerHTML = 0;
 dispLength.innerHTML = 6;
 
 function calcFund(fund, a, b, c) {
-    let totalFund = 0;
     let monthlyTotal = a + b + c;
     return monthlyTotal*fund;
 }
 
-expenseInputs.forEach(input => {
+inputs.forEach(input => {
     input.addEventListener('change', () => {
         let newLength = fundLengthInput.value;
         newLength = parseInt(newLength, 10);
