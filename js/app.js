@@ -29,6 +29,9 @@ let fundLength = 6;
 let housingValue = 0;
 let utilitiesValue = 0;
 let transportValue = 0;
+housingInput.value = 0;
+utilitiesInput.value = 0;
+transportInput.value = 0;
 
 function calcFund(fund, a, b, c) {
     let totalFund = 0;
