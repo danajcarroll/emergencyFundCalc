@@ -15,17 +15,35 @@ What do we need to do?
 const calcButton = document.getElementById('calculate');
 const inputs = document.getElementsByClassName('expenses');
 const expenseInputs = [...inputs];
+const fundLengthInput = document.getElementById('fundLength');
 
 const housingInput = document.getElementById('rentHousing');
 const utilitiesInput = document.getElementById('utilities');
 const transportInput = document.getElementById('transportation');
 
+
+// Setting default fund length to 6 months
+let fundLength = 6;
+
+// Setting expenses to 0
 let housingValue = 0;
 let utilitiesValue = 0;
 let transportValue = 0;
 
+function calcFund(fund, a, b, c) {
+    let totalFund = 0;
+    let monthlyTotal = a + b + c;
+    totalFund = monthlyTotal*fund;
+    console.log(totalFund);
+}
+
 expenseInputs.forEach(input => {
     input.addEventListener('change', () => {
+        let newLength = fundLengthInput.value;
+        newLength = parseInt(newLength, 10);
+        fundLength = newLength;
+
+
         let newHousing = housingInput.value;
         newHousing = parseInt(newHousing, 10);
         housingValue = newHousing;
@@ -41,12 +59,10 @@ expenseInputs.forEach(input => {
         console.log(`Housing value = ${housingValue}`);
         console.log(`Utilities value = ${utilitiesValue}`);
         console.log(`Transport value = ${transportValue}`);
+
+        // return fundLength, housingValue, utilitiesValue, transportValue;
+        calcFund(fundLength, housingValue, utilitiesValue, transportValue);
     })
 });
-// expenseInputs.addEventListener('change', function() {
-//     let newValue = housingInput.value;
-//     newValue = parseInt(newValue, 10);
-//     console.log(typeof newValue);
-// })
 
 
