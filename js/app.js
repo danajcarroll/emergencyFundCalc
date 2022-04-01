@@ -30,12 +30,17 @@ const housingInputList = [...allHousingInputs];
 const transportInputBox = document.getElementById('transportInputBox');
 const allTransportInputs = transportInputBox.getElementsByTagName('input');
 const transportInputList = [...allTransportInputs];
+    // Food and Health Inputs
+const personalInputBox = document.getElementById('personalInputBox');
+const allPersonalInputs = personalInputBox.getElementsByTagName('input');
+const personalInputList = [...allPersonalInputs];
 
 // Monthly Totals
 const allSectionsMonthly = document.getElementsByClassName('sectionMonthly');
 const sectionsMonthly = [...allSectionsMonthly];
 const housingMonthly = document.getElementById('housingMonthly');
 const transportMonthly = document.getElementById('transportMonthly');
+const personalMonthly = document.getElementById('personalMonthly');
 
 // Display Final Fund totals
 const dispMonthTotal = document.getElementById('monthlyExpenses');
@@ -51,6 +56,7 @@ let fundTotal = 0;
 // Set section monthly totals
 let housingMonthlyTotal = 0;
 let transportMonthlyTotal = 0;
+let personalMonthlyTotal = 0;
 let monthlyTotal = 0;
 
 // Set all input values to 0
@@ -69,10 +75,11 @@ dispLength.innerHTML = 6;
 // Set arrays for each section
 let housingInputs = [];
 let transportInputs = [];
+let personalInputs = [];
 
 
 function updateDisplay() {
-    monthlyTotal = housingMonthlyTotal + transportMonthlyTotal;
+    monthlyTotal = housingMonthlyTotal + transportMonthlyTotal + personalMonthlyTotal;
     fundTotal = monthlyTotal*fundLength;
     dispMonthTotal.innerHTML = monthlyTotal;
     dispFundTotal.innerHTML = fundTotal;
@@ -139,11 +146,39 @@ transportInputList.forEach(input => {
         let sum = [...transportInputs].reduce((a , b) => a + b, 0);
         transportMonthly.innerHTML = sum;
         transportMonthlyTotal = sum;
-        // updateMonthly(transportMonthly, transportMonthlyTotal, sum);
         updateDisplay();
 
 
         console.log(`Transport monthly total = ${transportMonthlyTotal}`);
+        console.log(`New overall monthly total = ${monthlyTotal}`);
+    })
+});
+// Personal Section Inputs
+personalInputList.forEach(input => {
+    // Starting input array values for section all at 0
+    let inputString = input.value;
+    let inputNum = parseInt(inputString, 10);
+    personalInputs.push(inputNum);
+
+    input.addEventListener('change', () => {
+        let newInputs = [];
+        // Update all input values and push to sections input array
+        personalInputList.forEach(input => {
+            let newInputValue = input.value;
+            let newInputNum = parseInt(newInputValue, 10);
+            newInputs.push(newInputNum);
+            personalInputs.splice(0, personalInputs.length, ...newInputs);
+        });
+        console.log('--- PERSONAL INPUTS ---');
+        console.log(personalInputs);
+        // Update total monthly amount for section
+        let sum = [...personalInputs].reduce((a , b) => a + b, 0);
+        personalMonthly.innerHTML = sum;
+        personalMonthlyTotal = sum;
+        updateDisplay();
+
+
+        console.log(`Personal monthly total = ${personalMonthlyTotal}`);
         console.log(`New overall monthly total = ${monthlyTotal}`);
     })
 });
