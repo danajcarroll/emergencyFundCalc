@@ -21,11 +21,13 @@ const expenseInputs = [...allExpenseInputs];
 // Section Box
 const sectionInputsBox = document.getElementsByClassName('sectionInputs');
 const inputBoxes = [...sectionInputsBox];
-const housingInputBox = document.getElementById('housingInputBox');
-const transportInputBox = document.getElementById('transportInputBox');
 
+    // Housing Inputs
+const housingInputBox = document.getElementById('housingInputBox');
 const allHousingInputs = housingInputBox.getElementsByTagName('input');
 const housingInputList = [...allHousingInputs];
+    // Transportation Inputs
+const transportInputBox = document.getElementById('transportInputBox');
 const allTransportInputs = transportInputBox.getElementsByTagName('input');
 const transportInputList = [...allTransportInputs];
 
@@ -40,12 +42,13 @@ const dispMonthTotal = document.getElementById('monthlyExpenses');
 const dispFundTotal = document.getElementById('fundTotal');
 const dispLength = document.getElementById('monthsLasting');
 
-/* ********** SETTING DEFAULT VALUES ********** */
-// Setting default fundlength and expenses
+// ********** SETTING DEFAULT VALUES **********
+// Set default fundlength and expenses
 fundLengthInput.value = 6;
 let fundLength = 6;
 let fundTotal = 0;
-// Setting section monthly totals
+
+// Set section monthly totals
 let housingMonthlyTotal = 0;
 let transportMonthlyTotal = 0;
 let monthlyTotal = 0;
@@ -58,11 +61,21 @@ expenseInputs.forEach(input => {
     input.value = 0;
 });
 
-// Setting default display values
+// Set default display values
 dispMonthTotal.innerHTML = 0;
 dispFundTotal.innerHTML = 0;
 dispLength.innerHTML = 6;
 
+
+function updateDisplay() {
+    monthlyTotal = housingMonthlyTotal + transportMonthlyTotal;
+    fundTotal = monthlyTotal*fundLength;
+    dispMonthTotal.innerHTML = monthlyTotal;
+    dispFundTotal.innerHTML = fundTotal;
+    dispLength.innerHTML = fundLength;
+}
+
+// ********** INPUT CHANGE EVENTS **********
 // When fund length changes
 fundLengthInput.addEventListener('change', () => {
     let newLength = fundLengthInput.value;
@@ -123,6 +136,7 @@ transportInputList.forEach(input => {
         let sum = [...transportInputs].reduce((a , b) => a + b, 0);
         transportMonthly.innerHTML = sum;
         transportMonthlyTotal = sum;
+        // updateMonthly(transportMonthly, transportMonthlyTotal, sum);
         updateDisplay();
 
 
@@ -131,12 +145,13 @@ transportInputList.forEach(input => {
     })
 });
 
-function updateDisplay() {
-    monthlyTotal = housingMonthlyTotal + transportMonthlyTotal;
-    fundTotal = monthlyTotal*fundLength;
-    dispMonthTotal.innerHTML = monthlyTotal;
-    dispFundTotal.innerHTML = fundTotal;
-    dispLength.innerHTML = fundLength;
-}
+
+// function updateMonthly(monthlyElement, monthlyTotal, sum) {
+//     monthlyElement.innerHTML = sum;
+//     monthlyTotal = sum;
+//     console.log(monthlyElement);
+//     console.log(monthlyTotal);
+//     console.log(sum);
+// }
 
 
