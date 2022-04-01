@@ -34,6 +34,10 @@ const transportInputList = [...allTransportInputs];
 const personalInputBox = document.getElementById('personalInputBox');
 const allPersonalInputs = personalInputBox.getElementsByTagName('input');
 const personalInputList = [...allPersonalInputs];
+// Loan Inputs
+const loanInputBox = document.getElementById('loanInputBox');
+const allLoanInputs = loanInputBox.getElementsByTagName('input');
+const loanInputList = [...allLoanInputs];
 
 // Monthly Totals
 const allSectionsMonthly = document.getElementsByClassName('sectionMonthly');
@@ -41,6 +45,7 @@ const sectionsMonthly = [...allSectionsMonthly];
 const housingMonthly = document.getElementById('housingMonthly');
 const transportMonthly = document.getElementById('transportMonthly');
 const personalMonthly = document.getElementById('personalMonthly');
+const loanMonthly = document.getElementById('loanMonthly');
 
 // Display Final Fund totals
 const dispMonthTotal = document.getElementById('monthlyExpenses');
@@ -57,6 +62,7 @@ let fundTotal = 0;
 let housingMonthlyTotal = 0;
 let transportMonthlyTotal = 0;
 let personalMonthlyTotal = 0;
+let loanMonthlyTotal = 0;
 let monthlyTotal = 0;
 
 // Set all input values to 0
@@ -76,10 +82,12 @@ dispLength.innerHTML = 6;
 let housingInputs = [];
 let transportInputs = [];
 let personalInputs = [];
+let loanInputs = [];
 
 
 function updateDisplay() {
-    monthlyTotal = housingMonthlyTotal + transportMonthlyTotal + personalMonthlyTotal;
+    monthlyTotal = 
+        housingMonthlyTotal + transportMonthlyTotal + personalMonthlyTotal + loanMonthlyTotal;
     fundTotal = monthlyTotal*fundLength;
     dispMonthTotal.innerHTML = monthlyTotal;
     dispFundTotal.innerHTML = fundTotal;
@@ -148,7 +156,6 @@ transportInputList.forEach(input => {
         transportMonthlyTotal = sum;
         updateDisplay();
 
-
         console.log(`Transport monthly total = ${transportMonthlyTotal}`);
         console.log(`New overall monthly total = ${monthlyTotal}`);
     })
@@ -177,8 +184,35 @@ personalInputList.forEach(input => {
         personalMonthlyTotal = sum;
         updateDisplay();
 
-
         console.log(`Personal monthly total = ${personalMonthlyTotal}`);
+        console.log(`New overall monthly total = ${monthlyTotal}`);
+    })
+});
+// Loan Section Inputs
+loanInputList.forEach(input => {
+    // Starting input array values for section all at 0
+    let inputString = input.value;
+    let inputNum = parseInt(inputString, 10);
+    loanInputs.push(inputNum);
+
+    input.addEventListener('change', () => {
+        let newInputs = [];
+        // Update all input values and push to sections input array
+        loanInputList.forEach(input => {
+            let newInputValue = input.value;
+            let newInputNum = parseInt(newInputValue, 10);
+            newInputs.push(newInputNum);
+            loanInputs.splice(0, loanInputs.length, ...newInputs);
+        });
+        console.log('--- LOAN INPUTS ---');
+        console.log(loanInputs);
+        // Update total monthly amount for section
+        let sum = [...loanInputs].reduce((a , b) => a + b, 0);
+        loanMonthly.innerHTML = sum;
+        loanMonthlyTotal = sum;
+        updateDisplay();
+
+        console.log(`Loan monthly total = ${loanMonthlyTotal}`);
         console.log(`New overall monthly total = ${monthlyTotal}`);
     })
 });

@@ -87,6 +87,26 @@
                 <h3>Total Monthly Food & Health Expenses: $<span class="sectionMonthly" id="personalMonthly"></span></h3>
             </div>
         </section> <!-- END OF SECTION -->
+
+        <!-- LOANS AND OTHER EXPENSES SECTION -->
+        <section class="">
+            <div class="sectionInputs" id="loanInputBox">
+                <label for="loan">Loan Payment</label>
+                <input class="expenses" type="number" name="loan" placeholder="0" id="loan">
+
+                <label for="creditCard">Credit Card</label>
+                <input class="expenses" type="number" name="creditCard" placeholder="0" id="creditCard">
+
+                <label for="education">Education</label>
+                <input class="expenses" type="number" name="education" placeholder="0" id="education">
+
+                <label for="otherLoans">Other Loan Expenses</label>
+                <input class="expenses" type="number" name="otherLoans" placeholder="0" id="otherLoans">
+            </div>
+            <div class="sectionTotal">
+                <h3>Total Monthly Loans & Other Expenses: $<span class="sectionMonthly" id="loanMonthly"></span></h3>
+            </div>
+        </section> <!-- END OF SECTION -->
         
         <div class="totalFundSection">
             <h2>Your monthly expenses are $<span id="monthlyExpenses"></span>. You would need $<span id="fundTotal"></span> in order for your emergency fund to last for <span id="monthsLasting"></span> months.</h2>
