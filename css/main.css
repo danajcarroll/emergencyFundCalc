@@ -3,3 +3,15 @@
     margin: 0;
     box-sizing: border-box;
 }
+.headers {
+    display: flex;
+}
+section {
+    border: 1px solid red;
+    padding: 20px;
+}
+
+.sectionInputs {
+    display: flex;
+    flex-direction: column;
+}
