@@ -11,72 +11,72 @@ What do we need to do?
 4. Run function to calculate everything again
 
 */
+
+/* ********** VARIABLES ********** */
+// All Inputs
+const fundLengthInput = document.getElementById('fundLength');
+const allExpenseInputs = document.getElementsByClassName('expenses');
+const expenseInputs = [...allExpenseInputs];
+
+// Monthly Totals
+const housingMonthly = document.getElementById('housingMonthly');
+const transportMonthly = document.getElementById('transportMonthly');
+
+// Display Final Fund totals
 const dispMonthTotal = document.getElementById('monthlyExpenses');
 const dispFundTotal = document.getElementById('fundTotal');
 const dispLength = document.getElementById('monthsLasting');
 
-const calcButton = document.getElementById('calculate');
-const allInputs = document.querySelectorAll('input');
-const inputs = [...allInputs];
-
-const fundLengthInput = document.getElementById('fundLength');
-const housingInput = document.getElementById('rentHousing');
-const utilitiesInput = document.getElementById('utilities');
-const transportInput = document.getElementById('transportation');
-
-
+/* ********** SETTING DEFAULT VALUES ********** */
 // Setting default fundlength and expenses
-let fundLength = 6;
-let housingValue = 0;
-let utilitiesValue = 0;
-let transportValue = 0;
-
-// Setting default input values
 fundLengthInput.value = 6;
-housingInput.value = 0;
-utilitiesInput.value = 0;
-transportInput.value = 0;
+let fundLength = 6;
 
-
-// Setting default display values
-dispMonthTotal.innerHTML = 0;
-dispFundTotal.innerHTML = 0;
-dispLength.innerHTML = 6;
-
-function calcFund(fund, a, b, c) {
-    let monthlyTotal = a + b + c;
-    return monthlyTotal*fund;
-}
-
-inputs.forEach(input => {
-    input.addEventListener('change', () => {
-        let newLength = fundLengthInput.value;
-        newLength = parseInt(newLength, 10);
-        fundLength = newLength;
-
-        let newHousing = housingInput.value;
-        newHousing = parseInt(newHousing, 10);
-        housingValue = newHousing;
-
-        let newUtilities = utilitiesInput.value;
-        newUtilities = parseInt(newUtilities, 10);
-        utilitiesValue = newUtilities;
-
-        let newTransport = transportInput.value;
-        newTransport = parseInt(newTransport, 10);
-        transportValue = newTransport;
-
-        console.log(`Housing value = ${housingValue}`);
-        console.log(`Utilities value = ${utilitiesValue}`);
-        console.log(`Transport value = ${transportValue}`);
-
-        let monthlyTotal = housingValue + utilitiesValue + transportValue;
-        let totalFund = calcFund(fundLength, housingValue, utilitiesValue, transportValue);
-
-        dispMonthTotal.innerHTML = monthlyTotal;
-        dispFundTotal.innerHTML = totalFund;
-        dispLength.innerHTML = fundLength;
-    })
+// Set all input values to 0
+expenseInputs.forEach(input => {
+    input.value = 0;
 });
+
+
+// // Setting default display values
+// dispMonthTotal.innerHTML = 0;
+// dispFundTotal.innerHTML = 0;
+// dispLength.innerHTML = 6;
+
+// function calcFund(fund, a, b, c) {
+//     let monthlyTotal = a + b + c;
+//     return monthlyTotal*fund;
+// }
+
+// inputs.forEach(input => {
+//     input.addEventListener('change', () => {
+//         let newLength = fundLengthInput.value;
+//         newLength = parseInt(newLength, 10);
+//         fundLength = newLength;
+
+//         let newHousing = housingInput.value;
+//         newHousing = parseInt(newHousing, 10);
+//         housingValue = newHousing;
+
+//         let newUtilities = utilitiesInput.value;
+//         newUtilities = parseInt(newUtilities, 10);
+//         utilitiesValue = newUtilities;
+
+//         let newTransport = transportInput.value;
+//         newTransport = parseInt(newTransport, 10);
+//         transportValue = newTransport;
+
+//         console.log(`Housing value = ${housingValue}`);
+//         console.log(`Utilities value = ${utilitiesValue}`);
+//         console.log(`Transport value = ${transportValue}`);
+
+//         let monthlyTotal = housingValue + utilitiesValue + transportValue;
+//         let totalFund = calcFund(fundLength, housingValue, utilitiesValue, transportValue);
+
+//         dispMonthTotal.innerHTML = monthlyTotal;
+//         dispFundTotal.innerHTML = totalFund;
+//         dispLength.innerHTML = fundLength;
+//     })
+// });
 
 
