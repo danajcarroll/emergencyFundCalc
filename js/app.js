@@ -18,6 +18,17 @@ const fundLengthInput = document.getElementById('fundLength');
 const allExpenseInputs = document.getElementsByClassName('expenses');
 const expenseInputs = [...allExpenseInputs];
 
+// Section Box
+const sectionInputsBox = document.getElementsByClassName('sectionInputs');
+const inputBoxes = [...sectionInputsBox];
+const housingInputBox = document.getElementById('housingInputBox');
+const transportInputBox = document.getElementById('transportInputBox');
+
+const allHousingInputs = housingInputBox.getElementsByTagName('input');
+const housingInputList = [...allHousingInputs];
+const allTransportInputs = transportInputBox.getElementsByTagName('input');
+const transportInputList = [...allTransportInputs];
+
 // Monthly Totals
 const allSectionsMonthly = document.getElementsByClassName('sectionMonthly');
 const sectionsMonthly = [...allSectionsMonthly];
@@ -46,6 +57,26 @@ expenseInputs.forEach(input => {
 dispMonthTotal.innerHTML = 0;
 dispFundTotal.innerHTML = 0;
 dispLength.innerHTML = 6;
+
+// Grabbing all inputs from each section
+let housingInputs = [];
+let transportInputs = [];
+housingInputList.forEach(input => {
+    let inputString = input.value;
+    let inputNum = parseInt(inputString, 10);
+    housingInputs.push(inputNum);
+});
+transportInputList.forEach(input => {
+    let inputString = input.value;
+    let inputNum = parseInt(inputString, 10);
+    transportInputs.push(inputNum);
+});
+console.log(housingInputs, transportInputs);
+// inputBoxes.forEach(box => {
+//     let input = box.getElementsByTagName('input');
+//     arrInputs.push(input);
+// });
+// console.log(arrInputs);
 
 // function calcFund(fund, a, b, c) {
 //     let monthlyTotal = a + b + c;
