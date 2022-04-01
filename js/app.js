@@ -65,20 +65,18 @@ dispLength.innerHTML = 6;
 
 // When fund length changes
 fundLengthInput.addEventListener('change', () => {
-    updateFundLength();
-})
-
-function updateFundLength() {
     let newLength = fundLengthInput.value;
     newLength = parseInt(newLength, 10);
     fundLength = newLength;
-    dispLength.innerHTML = fundLength;
-}
+
+    updateDisplay()
+})
 
 // Grabbing all inputs from each section
 let housingInputs = [];
 let transportInputs = [];
 housingInputList.forEach(input => {
+    // Starting input array values for section all at 0
     let inputString = input.value;
     let inputNum = parseInt(inputString, 10);
     housingInputs.push(inputNum);
@@ -105,6 +103,7 @@ housingInputList.forEach(input => {
     })
 });
 transportInputList.forEach(input => {
+    // Starting input array values for section all at 0
     let inputString = input.value;
     let inputNum = parseInt(inputString, 10);
     transportInputs.push(inputNum);
@@ -124,7 +123,7 @@ transportInputList.forEach(input => {
         let sum = [...transportInputs].reduce((a , b) => a + b, 0);
         transportMonthly.innerHTML = sum;
         transportMonthlyTotal = sum;
-        updateDisplay(transportMonthlyTotal, fundLength);
+        updateDisplay();
 
 
         console.log(`Transport monthly total = ${transportMonthlyTotal}`);
@@ -132,50 +131,12 @@ transportInputList.forEach(input => {
     })
 });
 
-function updateDisplay(sectionTotal, fundLength) {
-    monthlyTotal += sectionTotal;
+function updateDisplay() {
+    monthlyTotal = housingMonthlyTotal + transportMonthlyTotal;
     fundTotal = monthlyTotal*fundLength;
     dispMonthTotal.innerHTML = monthlyTotal;
     dispFundTotal.innerHTML = fundTotal;
     dispLength.innerHTML = fundLength;
 }
-
-
-
-// function calcFund(fund, a, b, c) {
-//     let monthlyTotal = a + b + c;
-//     return monthlyTotal*fund;
-// }
-
-// inputs.forEach(input => {
-//     input.addEventListener('change', () => {
-//         let newLength = fundLengthInput.value;
-//         newLength = parseInt(newLength, 10);
-//         fundLength = newLength;
-
-//         let newHousing = housingInput.value;
-//         newHousing = parseInt(newHousing, 10);
-//         housingValue = newHousing;
-
-//         let newUtilities = utilitiesInput.value;
-//         newUtilities = parseInt(newUtilities, 10);
-//         utilitiesValue = newUtilities;
-
-//         let newTransport = transportInput.value;
-//         newTransport = parseInt(newTransport, 10);
-//         transportValue = newTransport;
-
-//         console.log(`Housing value = ${housingValue}`);
-//         console.log(`Utilities value = ${utilitiesValue}`);
-//         console.log(`Transport value = ${transportValue}`);
-
-//         let monthlyTotal = housingValue + utilitiesValue + transportValue;
-//         let totalFund = calcFund(fundLength, housingValue, utilitiesValue, transportValue);
-
-//         dispMonthTotal.innerHTML = monthlyTotal;
-//         dispFundTotal.innerHTML = totalFund;
-//         dispLength.innerHTML = fundLength;
-//     })
-// });
 
 
