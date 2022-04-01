@@ -13,18 +13,59 @@
 
         <h2>How many months would you like your emergency fund to last?</h2>
         <input type="number" id="fundLength" placeholder="6">
-        <div class="calculatorContainer">
-            <label for="rentHousing">Rent/Mortgage</label>
-            <input class="expenses" type="number" name="rentHousing" placeholder="0" id="rentHousing" onkeypress="">
-            <label for="utilities">Utilities</label>
-            <input class="expenses" type="number" name="utilities" placeholder="0" id="utilities">
-            <label for="transportation">Transportation</label>
-            <input class="expenses" type="number" name="transportation" placeholder="0" id="transportation">
+        <div class="headers">
+            <h2>Housing</h2>
+            <h2>Transportation</h2>
+            <h2>Food & Healthcare</h2>
+            <h2>Loans & Other Expenses</h2>
+        </div>
+        <!-- HOUSING SECTION -->
+        <div class="housingSection">
+            <div class="sectionInputs">
+                <label for="rentHousing">Rent/Mortgage</label>
+                <input class="expenses" type="number" name="rentHousing" placeholder="0" id="rentHousing">
 
-            <button id="calculate">
-                Calculate
-            </button>
+                <label for="utilities">Utilities</label>
+                <input class="expenses" type="number" name="utilities" placeholder="0" id="utilities">
 
+                <label for="homeMaintenance">Home Maintenance</label>
+                <input class="expenses" type="number" name="homeMaintenance" placeholder="0" id="homeMaintenance">
+
+                <label for="propertyTax">Property Tax</label>
+                <input class="expenses" type="number" name="propertyTax" placeholder="0" id="propertyTax">
+                
+                <label for="homeInsurance">Home Insurance</label>
+                <input class="expenses" type="number" name="homeInsurance" placeholder="0" id="homeInsurance">
+            </div>
+            <div class="sectionTotal">
+                <h3>Total Monthly Housing Expenses: $<span class="sectionMonthly"></span></h3>
+            </div>
+        </div> <!-- END OF SECTION -->
+
+        <!-- TRANSPORT SECTION -->
+        <div class="housingSection">
+            <div class="sectionInputs">
+                <label for="carPayment">Car Payments</label>
+                <input class="expenses" type="number" name="carPayment" placeholder="0" id="carPayment">
+
+                <label for="gas">Gas</label>
+                <input class="expenses" type="number" name="gas" placeholder="0" id="gas">
+
+                <label for="publicTransit">Public Transit</label>
+                <input class="expenses" type="number" name="publicTransit" placeholder="0" id="publicTransit">
+
+                <label for="carInsurance">Car Insurance</label>
+                <input class="expenses" type="number" name="carInsurance" placeholder="0" id="carInsurance">
+
+                <label for="otherTransport">Other Transportion Expenses</label>
+                <input class="expenses" type="number" name="otherTransport" placeholder="0" id="otherTransport">
+            </div>
+            <div class="sectionTotal">
+                <h3>Total Monthly Transportation Expenses: $<span class="sectionMonthly"></span></h3>
+            </div>
+        </div> <!-- END OF SECTION -->
+        
+        <div class="totalFundSection">
             <h2>Your monthly expenses are $<span id="monthlyExpenses"></span>. You would need $<span id="fundTotal"></span> in order for your emergency fund to last for <span id="monthsLasting"></span> months.</h2>
         </div>
     </main>
