@@ -19,6 +19,8 @@ const allExpenseInputs = document.getElementsByClassName('expenses');
 const expenseInputs = [...allExpenseInputs];
 
 // Monthly Totals
+const allSectionsMonthly = document.getElementsByClassName('sectionMonthly');
+const sectionsMonthly = [...allSectionsMonthly];
 const housingMonthly = document.getElementById('housingMonthly');
 const transportMonthly = document.getElementById('transportMonthly');
 
@@ -33,15 +35,17 @@ fundLengthInput.value = 6;
 let fundLength = 6;
 
 // Set all input values to 0
+sectionsMonthly.forEach(section => {
+    section.innerHTML = 0;
+});
 expenseInputs.forEach(input => {
     input.value = 0;
 });
 
-
-// // Setting default display values
-// dispMonthTotal.innerHTML = 0;
-// dispFundTotal.innerHTML = 0;
-// dispLength.innerHTML = 6;
+// Setting default display values
+dispMonthTotal.innerHTML = 0;
+dispFundTotal.innerHTML = 0;
+dispLength.innerHTML = 6;
 
 // function calcFund(fund, a, b, c) {
 //     let monthlyTotal = a + b + c;
