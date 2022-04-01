@@ -70,13 +70,20 @@ transportInputList.forEach(input => {
     let inputString = input.value;
     let inputNum = parseInt(inputString, 10);
     transportInputs.push(inputNum);
+
+    input.addEventListener('change', () => {
+        // take all transportInput values
+        let newInputs = [];
+        transportInputList.forEach(input => {
+            let newInputValue = input.value;
+            let newInputNum = parseInt(newInputValue, 10);
+            newInputs.push(newInputNum);
+            transportInputs.splice(0, transportInputs.length, ...newInputs);
+        });
+        console.log(transportInputs);
+    })
 });
-console.log(housingInputs, transportInputs);
-// inputBoxes.forEach(box => {
-//     let input = box.getElementsByTagName('input');
-//     arrInputs.push(input);
-// });
-// console.log(arrInputs);
+// console.log(transportInputs);
 
 // function calcFund(fund, a, b, c) {
 //     let monthlyTotal = a + b + c;
