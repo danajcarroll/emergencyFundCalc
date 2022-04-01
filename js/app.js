@@ -65,6 +65,17 @@ housingInputList.forEach(input => {
     let inputString = input.value;
     let inputNum = parseInt(inputString, 10);
     housingInputs.push(inputNum);
+
+    input.addEventListener('change', () => {
+        let newInputs = [];
+        housingInputList.forEach(input => {
+            let newInputValue = input.value;
+            let newInputNum = parseInt(newInputValue, 10);
+            newInputs.push(newInputNum);
+            housingInputs.splice(0, housingInputs.length, ...newInputs);
+        });
+        console.log(housingInputs);
+    })
 });
 transportInputList.forEach(input => {
     let inputString = input.value;
@@ -72,7 +83,6 @@ transportInputList.forEach(input => {
     transportInputs.push(inputNum);
 
     input.addEventListener('change', () => {
-        // take all transportInput values
         let newInputs = [];
         transportInputList.forEach(input => {
             let newInputValue = input.value;
@@ -83,7 +93,7 @@ transportInputList.forEach(input => {
         console.log(transportInputs);
     })
 });
-// console.log(transportInputs);
+
 
 // function calcFund(fund, a, b, c) {
 //     let monthlyTotal = a + b + c;
