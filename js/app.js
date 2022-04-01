@@ -66,6 +66,10 @@ dispMonthTotal.innerHTML = 0;
 dispFundTotal.innerHTML = 0;
 dispLength.innerHTML = 6;
 
+// Set arrays for each section
+let housingInputs = [];
+let transportInputs = [];
+
 
 function updateDisplay() {
     monthlyTotal = housingMonthlyTotal + transportMonthlyTotal;
@@ -85,9 +89,7 @@ fundLengthInput.addEventListener('change', () => {
     updateDisplay()
 })
 
-// Grabbing all inputs from each section
-let housingInputs = [];
-let transportInputs = [];
+// Housing Section Inputs
 housingInputList.forEach(input => {
     // Starting input array values for section all at 0
     let inputString = input.value;
@@ -115,6 +117,7 @@ housingInputList.forEach(input => {
         console.log(`New overall monthly total = ${monthlyTotal}`);
     })
 });
+// Transport Section Inputs
 transportInputList.forEach(input => {
     // Starting input array values for section all at 0
     let inputString = input.value;
@@ -145,7 +148,7 @@ transportInputList.forEach(input => {
     })
 });
 
-
+// ***** Trying to make dynamic function to update monthly total
 // function updateMonthly(monthlyElement, monthlyTotal, sum) {
 //     monthlyElement.innerHTML = sum;
 //     monthlyTotal = sum;
