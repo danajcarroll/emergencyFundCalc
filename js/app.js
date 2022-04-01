@@ -37,7 +37,6 @@ housingInput.value = 0;
 utilitiesInput.value = 0;
 transportInput.value = 0;
 
-
 // Setting default display values
 dispMonthTotal.innerHTML = 0;
 dispFundTotal.innerHTML = 0;
