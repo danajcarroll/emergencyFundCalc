@@ -185,5 +185,30 @@ input:focus {
 .fundNumber {
     font-size: 2rem;
 }
+/* ***** Charts ***** */
+.displayChart {
+    width: 100%;
+    padding: 20px;
+}
+
+
+/* Media Query - Low Res Tablets & iPads */
+@media (min-width: 481px) and (max-width: 768px) {
+
+}
+
+/* Media Query - Small Screens & Laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+}
+/* Media Query - Desktops & Large Screens */
+@media (min-width: 1025px) and (max-width: 1200px) {
+
+}
+
+/* Media Query - Extra Large Screens & TVs */
+@media (min-width: 1201px) {
+
+}
 
 

@@ -68,6 +68,7 @@ let transportMonthlyTotal = 0;
 let personalMonthlyTotal = 0;
 let loanMonthlyTotal = 0;
 let monthlyTotal = 0;
+let chartData = [housingMonthlyTotal, transportMonthlyTotal, personalMonthlyTotal, loanMonthlyTotal];
 
 // Set all input values to 0
 sectionsMonthly.forEach(section => {
@@ -134,6 +135,8 @@ housingInputList.forEach(input => {
 
         console.log(`Housing monthly total = ${housingMonthlyTotal}`);
         console.log(`New overall monthly total = ${monthlyTotal}`);
+        chartData.splice(0, 1, housingMonthlyTotal);
+        myChart.update();
     })
 });
 // Transport Section Inputs
@@ -162,6 +165,8 @@ transportInputList.forEach(input => {
 
         console.log(`Transport monthly total = ${transportMonthlyTotal}`);
         console.log(`New overall monthly total = ${monthlyTotal}`);
+        chartData.splice(1, 1, transportMonthlyTotal);
+        myChart.update();
     })
 });
 // Personal Section Inputs
@@ -190,6 +195,8 @@ personalInputList.forEach(input => {
 
         console.log(`Personal monthly total = ${personalMonthlyTotal}`);
         console.log(`New overall monthly total = ${monthlyTotal}`);
+        chartData.splice(2, 1, personalMonthlyTotal);
+        myChart.update();
     })
 });
 // Loan Section Inputs
@@ -218,6 +225,8 @@ loanInputList.forEach(input => {
 
         console.log(`Loan monthly total = ${loanMonthlyTotal}`);
         console.log(`New overall monthly total = ${monthlyTotal}`);
+        chartData.splice(3, 1, loanMonthlyTotal);
+        myChart.update();
     })
 });
 
@@ -254,3 +263,58 @@ allTabButtons.forEach(button => {
     })
 });
 
+
+
+// ***** Pie Chart *****
+
+function addData(array) {
+    chartData.array.datasets.forEach((datasest) => {
+        dataset.data.push(array);
+    });
+    chartData.updata();
+}
+
+
+const ctx = document.getElementById('chart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Housing Monthly', 'Transportation Monthly', 'Food & Health Monthly', 'Loans & Other Monthly'],
+        datasets: [{
+            data: chartData,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+            ],
+            borderWidth: 1,
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.label;
+                        let value = context.formattedValue;
+        
+                        if (!label)
+                            label = 'Unknown'
+        
+                        let sum = 0;
+                        let dataArr = context.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += Number(data);
+                        });
+        
+                        let percentage = (value * 100 / sum).toFixed(2) + '%';
+                        return label + ": " + percentage;
+                    }
+                }
+            }
+        }]
+    }
+});
