@@ -13,14 +13,18 @@ What do we need to do?
 */
 
 /* ********** VARIABLES ********** */
+// Category Buttons
+const tabNodeList = document.getElementsByClassName('categoryTab');
+const allTabButtons = [...tabNodeList];
+
+// Input Sections
+const inputSectionNodeList = document.getElementsByClassName('inputSection');
+const allInputSections = [...inputSectionNodeList];
+
 // All Inputs
 const fundLengthInput = document.getElementById('fundLength');
 const allExpenseInputs = document.getElementsByClassName('expenses');
 const expenseInputs = [...allExpenseInputs];
-
-// Section Box
-const sectionInputsBox = document.getElementsByClassName('sectionInputs');
-const inputBoxes = [...sectionInputsBox];
 
     // Housing Inputs
 const housingInputBox = document.getElementById('housingInputBox');
@@ -226,4 +230,27 @@ loanInputList.forEach(input => {
 //     console.log(sum);
 // }
 
+
+// ***** Category Tabs *****
+function changeActive(button) {
+    allTabButtons.forEach(button => {
+        button.classList.remove('activeTab');
+    })
+    button.classList.add('activeTab');
+}
+function changeActiveInputs(id) {
+    allInputSections.forEach(section => {
+        section.classList.remove('activeSection');
+
+        if (section.id == `${id}InputBox`) {
+            section.classList.add('activeSection');
+        }
+    })
+}
+allTabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        changeActive(button);
+        changeActiveInputs(button.id)
+    })
+});
 
