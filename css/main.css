@@ -2,16 +2,188 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
-.headers {
-    display: flex;
-}
-section {
-    border: 1px solid red;
-    padding: 20px;
+:root {
+    --main: #3E77E4;
+    --mainDark: #11409A;
+    --mainLight: #7BA0EA;
+    --mainLighter: #88AFFB;
+    --sub: #FFD3AB;
+    --white: #FFFFFF;
 }
 
-.sectionInputs {
+/* ***** MOBILE STYLING ***** */
+body {
+    padding: 10px 20px;
+}
+
+/* ***** Header ***** */
+header {
+    width: 100%;
+    height: 75px;
+    display: grid;
+    grid-template-columns: 0.5fr auto 0.5fr;
+    grid-template-rows: auto;
+    align-items: center;
+    grid-template-areas: 
+    'info title .'
+    ;
+}
+header > h1 {
+    grid-area: title;
+    font-size: 1.5rem;
+}
+header > button {
+    grid-area: info;
+    display: inline-block;
+    border: none;
+    border-radius: 50%;
+    justify-self: center;
+    background-color: var(--mainLight);
+    padding: 5px 10px;
+}
+/* ***** Main ***** */
+main {
+    display: grid;
+    grid-row-gap: 20px;
+}
+/* ***** Fund Length ***** */
+.fundLength {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px;
+}
+.fundLength > input {
+    padding: 5px 10px;
+    border: 1px solid var(--mainLight);
+    border-radius: 5px;
+}
+/* ***** Calc Container ***** */
+.calculatorContainer {
+    width: 100%;
+    border: 1px solid var(--main);
+    border-radius: 10px;
+    overflow: hidden;
+}
+/* ***** Category Tabs ***** */
+ul {
+    list-style-type: none;
     display: flex;
     flex-direction: column;
 }
+.categoryTab {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--white);
+    background-color: var(--main);
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--mainLight);
+}
+.activeTab {
+    background-color: var(--mainDark);
+}
+.categoryTab > h2 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+.totalBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.monthlyTotal {
+    font-size: 1.75rem;
+}
+.monthlyText {
+    font-size: 0.75rem;
+}
+/* ***** Input Sections ***** */
+.allInputContainer {
+    padding: 20px 15px;
+    border-bottom: 1px solid var(--mainLight);
+}
+.inputSection {
+    display: none;
+    flex-direction: column;
+}
+.activeSection {
+    display: flex;
+}
+.inputSection > label {
+    padding-bottom: 8px;
+}
+.inputHolder {
+    display: flex;
+    margin-bottom: 15px;
+    border: 1px solid var(--mainLight);
+    border-radius: 5px;
+}
+.inputHolder > input {
+    width: 100%;
+    border: none;
+    padding: 5px 5px 5px 10px;
+    font-size: 1rem;
+}
+input:focus {
+    outline: none !important;
+    border: 1px solid var(--mainDark);
+
+}
+.inputHolder > .dollarBox {
+    display: flex;
+    align-items: center;
+    padding: 3px 10px;
+    color: var(--white);
+    background-color: var(--mainLight);
+}
+/* ***** Total Fund Section ***** */
+.totalFundSection {
+    display: flex;
+    flex-direction: column;
+}
+.displayAmounts {
+    background-color: var(--mainLight);
+    color: var(--white);
+}
+.displayBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+.monthlyTotalBox {
+    position: relative;
+}
+.monthlyTotalBox::after {
+    position: absolute;
+    content: '';
+    height: 1px;
+    width: 80%;
+    background-color: var(--mainLighter);
+    bottom: 0;
+    /* border-bottom: 1px solid white; */
+}
+.displayBox > h4 {
+    width: 10ch;
+    font-size: 1rem;
+    font-weight: 400;
+}
+.displayBox > h3 {
+    width: 10ch;
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+.monthlyNumber {
+    font-size: 1.5rem;
+}
+.fundNumber {
+    font-size: 2rem;
+}
+
+

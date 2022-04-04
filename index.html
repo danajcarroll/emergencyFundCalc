@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergency Fund Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <header>
-        <button>Info</button>
+        <button>i</button>
         <h1>E. Fund Calculator</h1>
     </header>
     <main>
@@ -17,131 +20,180 @@
             <p>How many months would you like your emergency fund to last?</p>
             <input type="number" id="fundLength" placeholder="6">
         </div>
-        <ul class="">
-            <li class="categoryTab">
-                <div class="tabHolder">
-                    <h2>Housing</h2>
-                    <div class="sectionMonthly">
-                        <p class="monthlyTotal">$<span id="housingMonthly"></span></p>
-                        <p>monthly</p>
+        <div class="calculatorContainer">
+            <ul>
+                <li class="categoryTab activeTab">
+                        <h2>Housing</h2>
+                        <div class="totalBox">
+                            <p class="monthlyTotal">$<span class="sectionMonthly" id="housingMonthly"></span></p>
+                            <p class="monthlyText">monthly</p>
+                        </div>
+                </li>
+                <li class="categoryTab">
+                        <h2>Transportation</h2>
+                        <div class="totalBox">
+                            <p class="monthlyTotal">$<span class="sectionMonthly" id="transportMonthly"></span></p>
+                            <p class="monthlyText">monthly</p>
+                        </div>
+                </li>
+                <li class="categoryTab">
+                        <h2>Food & Health</h2>
+                        <div class="totalBox">
+                            <p class="monthlyTotal">$<span class="sectionMonthly" id="personalMonthly"></span></p>
+                            <p class="monthlyText">monthly</p>
+                        </div>
+                </li>
+                <li class="categoryTab">
+                        <h2>Loans & Other</h2>
+                        <div class="totalBox">
+                            <p class="monthlyTotal">$<span class="sectionMonthly" id="loanMonthly"></span></p>
+                            <p class="monthlyText">monthly</p>
+                        </div>
+                </li>
+            </ul>
+            <section class="allInputContainer">
+                <!-- HOUSING INPUTS -->
+                <div class="inputSection activeSection" id="housingInputBox">
+
+                    <label for="rentHousing">Rent/Mortgage</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="rentHousing" placeholder="0" id="rentHousing">
+                    </div>
+
+                    <label for="utilities">Utilities (Electricity, Internet)</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="utilities" placeholder="0" id="utilities">
+                    </div>
+
+                    <label for="homeMaintenance">Home Maintenance</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="homeMaintenance" placeholder="0" id="homeMaintenance">
+                    </div>
+
+                    <label for="propertyTax">Property Tax</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="propertyTax" placeholder="0" id="propertyTax">
+                    </div>
+
+                    <label for="homeInsurance">Home Insurance</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="homeInsurance" placeholder="0" id="homeInsurance">
+                    </div>
+                </div> <!-- END OF SECTION -->
+
+                <!-- TRANSPORTATION INPUTS -->
+                <div class="inputSection" id="transportInputBox">
+                    <label for="carPayment">Car Payments</label>
+
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="carPayment" placeholder="0" id="carPayment">
+                    </div>
+
+                    <label for="gas">Gas</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="gas" placeholder="0" id="gas">
+                    </div>
+
+                    <label for="publicTransit">Public Transit</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="publicTransit" placeholder="0" id="publicTransit">
+                    </div>
+
+                    <label for="carInsurance">Car Insurance</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="carInsurance" placeholder="0" id="carInsurance">
+                    </div>
+
+                    <label for="otherTransport">Other Transportion Expenses</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="otherTransport" placeholder="0" id="otherTransport">
+                    </div>
+                </div> <!-- END OF SECTION -->
+
+                <!-- FOOD AND HEALTH SECTION -->
+                <div class="inputSection" id="personalInputBox">
+                    <label for="food">Food</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="food" placeholder="0" id="food">
+                    </div>
+                    <label for="personalHygiene">Personal Hygiene</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="personalHygiene" placeholder="0" id="personalHygiene">
+                    </div>
+                    <label for="medicalInsurance">Medical Insurance/Life Insurance</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="medicalInsurance" placeholder="0" id="medicalInsurance">
+                    </div>
+                    <label for="childCare">Child Care</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="childCare" placeholder="0" id="childCare">
+                    </div>
+                    <label for="otherPersonal">Other Food & Health Expenses</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="otherPersonal" placeholder="0" id="otherPersonal">
+                    </div>
+                </div> <!-- END OF SECTION -->
+
+                <!-- LOANS SECTION -->
+                <div class="inputSection" id="loanInputBox">
+                    <label for="loan">Loan Payment</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="loan" placeholder="0" id="loan">
+                    </div>
+
+                    <label for="creditCard">Credit Card</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="creditCard" placeholder="0" id="creditCard">
+                    </div>
+
+                    <label for="education">Education</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="education" placeholder="0" id="education">
+                    </div>
+
+                    <label for="otherLoans">Other Loan Expenses</label>
+                    <div class="inputHolder">
+                        <p class="dollarBox">$</p>
+                        <input class="expenses" type="number" name="otherLoans" placeholder="0" id="otherLoans">
+                    </div>
+
+                </div> <!-- END OF SECTION -->
+            </section>
+            
+            <section class="totalFundSection">
+                <div class="displayAmounts">
+                    <div class="displayBox monthlyTotalBox">
+                        <h4>Monthly Expenses</h4>
+                        <p class="monthlyNumber">$<span id="monthlyExpenses"></span></p>
+                    </div>
+                    <div class="displayBox">
+                        <h3><span id="monthsLasting"></span> Month Emergency Fund</h3>
+                        <p class="fundNumber">$<span id="fundTotal"></span></p>
                     </div>
                 </div>
-            </li>
-            <li class="fundTab">
-                <div class="tabHolder">
-                    <h2>Transportation</h2>
-                    <div class="sectionMonthly">
-                        <p class="monthlyTotal">$<span id="transportMonthly"></span></p>
-                        <p>monthly</p>
-                    </div>
+                <div class="displayChart">
+
                 </div>
-            </li>
-            <li class="fundTab">
-                <div class="tabHolder">
-                    <h2>Food & Health</h2>
-                    <div class="sectionMonthly">
-                        <p class="monthlyTotal">$<span id="personalMonthly"></span></p>
-                        <p>monthly</p>
-                    </div>
-                </div>
-            </li>
-            <li class="fundTab">
-                <div class="tabHolder">
-                    <h2>Loans & Other</h2>
-                    <div class="sectionMonthly">
-                        <p class="monthlyTotal">$<span id="loansMonthly"></span></p>
-                        <p>monthly</p>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <section class="calculatorContainer">
-            <!-- HOUSING INPUTS -->
-            <div class="inputHolder" id="housingInputBox">
-                <label for="rentHousing">Rent/Mortgage</label>
-                <input class="expenses" type="number" name="rentHousing" placeholder="0" id="rentHousing">
-
-                <label for="utilities">Utilities</label>
-                <input class="expenses" type="number" name="utilities" placeholder="0" id="utilities">
-
-                <label for="homeMaintenance">Home Maintenance</label>
-                <input class="expenses" type="number" name="homeMaintenance" placeholder="0" id="homeMaintenance">
-
-                <label for="propertyTax">Property Tax</label>
-                <input class="expenses" type="number" name="propertyTax" placeholder="0" id="propertyTax">
-
-                <label for="homeInsurance">Home Insurance</label>
-                <input class="expenses" type="number" name="homeInsurance" placeholder="0" id="homeInsurance">
-            </div> <!-- END OF SECTION -->
-
-            <!-- TRANSPORTATION INPUTS -->
-            <div class="inputHolder" id="transportInputBox">
-                <label for="carPayment">Car Payments</label>
-                <input class="expenses" type="number" name="carPayment" placeholder="0" id="carPayment">
-
-                <label for="gas">Gas</label>
-                <input class="expenses" type="number" name="gas" placeholder="0" id="gas">
-
-                <label for="publicTransit">Public Transit</label>
-                <input class="expenses" type="number" name="publicTransit" placeholder="0" id="publicTransit">
-
-                <label for="carInsurance">Car Insurance</label>
-                <input class="expenses" type="number" name="carInsurance" placeholder="0" id="carInsurance">
-
-                <label for="otherTransport">Other Transportion Expenses</label>
-                <input class="expenses" type="number" name="otherTransport" placeholder="0" id="otherTransport">
-            </div> <!-- END OF SECTION -->
-
-            <!-- FOOD AND HEALTH SECTION -->
-            <div class="inputHolder" id="personalInputBox">
-                <label for="food">Food</label>
-                <input class="expenses" type="number" name="food" placeholder="0" id="food">
-    
-                <label for="personalHygiene">Personal Hygiene</label>
-                <input class="expenses" type="number" name="personalHygiene" placeholder="0" id="personalHygiene">
-    
-                <label for="medicalInsurance">Medical Insurance/Life Insurance</label>
-                <input class="expenses" type="number" name="medicalInsurance" placeholder="0" id="medicalInsurance">
-    
-                <label for="childCare">Child Care</label>
-                <input class="expenses" type="number" name="childCare" placeholder="0" id="childCare">
-    
-                <label for="otherPersonal">Other Food & Health Expenses</label>
-                <input class="expenses" type="number" name="otherPersonal" placeholder="0" id="otherPersonal">
-            </div> <!-- END OF SECTION -->
-
-            <!-- LOANS SECTION -->
-            <div class="inputHolder" id="loanInputBox">
-                <label for="loan">Loan Payment</label>
-                <input class="expenses" type="number" name="loan" placeholder="0" id="loan">
-
-                <label for="creditCard">Credit Card</label>
-                <input class="expenses" type="number" name="creditCard" placeholder="0" id="creditCard">
-
-                <label for="education">Education</label>
-                <input class="expenses" type="number" name="education" placeholder="0" id="education">
-
-                <label for="otherLoans">Other Loan Expenses</label>
-                <input class="expenses" type="number" name="otherLoans" placeholder="0" id="otherLoans">
-            </div> <!-- END OF SECTION -->
-
-        </section>
-        
-        <section class="totalFundSection">
-            <div class="displayAmounts">
-                <div class="monthlyTotal">
-                    <h4>Monthly Expenses</h4>
-                    <p>$<span id="monthlyExpenses"></span></p>
-                </div>
-                <div class="monthlyTotal">
-                    <h3><span id="monthsLasting"></span> Month Emergency Fund</h3>
-                    <p>$<span id="fundTotal"></span></p>
-                </div>
-            </div>
-            <div class="displayChart">
-
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <script src="js/app.js"></script>
