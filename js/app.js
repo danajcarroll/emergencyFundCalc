@@ -1,4 +1,5 @@
 'use strict';
+console.log(visualViewport);
 
 /* 
 EMERGENCY FUND CALCULATOR
@@ -316,5 +317,12 @@ const myChart = new Chart(ctx, {
                 }
             }
         }]
+    }, options: {
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                // display: false
+            }
+        }
     }
 });
