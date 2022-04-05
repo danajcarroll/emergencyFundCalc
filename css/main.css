@@ -316,7 +316,8 @@ ul {
 
 
 /* Media Query - Desktops & Large Screens */
-@media (min-width: 1025px) and (max-width: 1200px) {
+/* @media (min-width: 1025px) and (max-width: 1200px) { */
+@media (min-width: 1025px) {
 body {
     padding: 10px 30px 20px 30px;
 }
