@@ -1,5 +1,4 @@
 'use strict';
-console.log(visualViewport);
 
 /* 
 EMERGENCY FUND CALCULATOR
@@ -95,10 +94,57 @@ function updateDisplay() {
     monthlyTotal = 
         housingMonthlyTotal + transportMonthlyTotal + personalMonthlyTotal + loanMonthlyTotal;
     fundTotal = monthlyTotal*fundLength;
-    dispMonthTotal.innerHTML = monthlyTotal;
-    dispFundTotal.innerHTML = fundTotal;
-    dispLength.innerHTML = fundLength;
+    dispMonthTotal.innerHTML =  addComma(monthlyTotal);
+    dispFundTotal.innerHTML = addComma(fundTotal);
+    dispLength.innerHTML = addComma(fundLength);
 }
+
+/* 
+1. DONE Take the number - the parameter going into the function
+2. DONE Take the number, break each character into a string, put into array
+3. if there are 1, 2 or 3 strings in the array, join characters back togther, return the number
+4. if there are 4 strings, put comma after 1st string in array, join back together, return number
+5. i fthere are 5 strings, comma after 2nd string, join together, return number
+6. if there are 6 strings, comma after 3rd string, join together, return number
+7. if there are 7 strings, comma after 1ST and 4TH (can this be done at the same time?), join together, return number
+
+*/
+function addComma(number) {
+    let string = number.toString();
+    let splitString =  string.split('');
+    if (splitString.length <= 3) {
+        let newString = splitString.join('');
+        return splitString.join('');
+
+    } if (splitString.length == 4) {
+        splitString.splice(1, 0, ',');
+        return splitString.join('');
+
+    } if (splitString.length == 5) {
+        splitString.splice(2, 0, ',');
+        return splitString.join('');
+
+    } if (splitString.length == 6) {
+        splitString.splice(3, 0, ',');
+        return splitString.join('');
+
+    } if (splitString.length == 7) {
+        splitString.splice(1, 0, ',') && splitString.splice(5, 0, ',');
+        return splitString.join('');
+    }
+}
+let test1 = addComma(10);
+console.log(test1);
+let test2 = addComma(100);
+console.log(test2);
+let test3 = addComma(1000);
+console.log(test3);
+let test5digits = addComma(10000);
+console.log(test5digits);
+let test6 = addComma(100000);
+console.log(test6);
+let test7 = addComma(1000000);
+console.log(test7);
 
 // ********** INPUT CHANGE EVENTS **********
 // When fund length changes
@@ -130,7 +176,7 @@ housingInputList.forEach(input => {
         console.log(housingInputs);
         // Update total monthly amount for section
         let sum = [...housingInputs].reduce((a , b) => a + b, 0);
-        housingMonthly.innerHTML = sum;
+        housingMonthly.innerHTML = addComma(sum);
         housingMonthlyTotal = sum;
         updateDisplay(housingMonthlyTotal, fundLength);
 
@@ -160,7 +206,7 @@ transportInputList.forEach(input => {
         console.log(transportInputs);
         // Update total monthly amount for section
         let sum = [...transportInputs].reduce((a , b) => a + b, 0);
-        transportMonthly.innerHTML = sum;
+        transportMonthly.innerHTML = addComma(sum);
         transportMonthlyTotal = sum;
         updateDisplay();
 
@@ -190,7 +236,7 @@ personalInputList.forEach(input => {
         console.log(personalInputs);
         // Update total monthly amount for section
         let sum = [...personalInputs].reduce((a , b) => a + b, 0);
-        personalMonthly.innerHTML = sum;
+        personalMonthly.innerHTML = addComma(sum);
         personalMonthlyTotal = sum;
         updateDisplay();
 
@@ -220,7 +266,7 @@ loanInputList.forEach(input => {
         console.log(loanInputs);
         // Update total monthly amount for section
         let sum = [...loanInputs].reduce((a , b) => a + b, 0);
-        loanMonthly.innerHTML = sum;
+        loanMonthly.innerHTML = addComma(sum);
         loanMonthlyTotal = sum;
         updateDisplay();
 
