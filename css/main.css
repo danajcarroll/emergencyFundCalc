@@ -320,11 +320,28 @@ ul {
 @media (min-width: 1025px) {
 body {
     padding: 10px 30px 20px 30px;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 8% 92%;
+    grid-template-areas: 
+    'header'
+    'main'
+    ;
+}
+header {
+    grid-area: header;
 }
 main {
+    grid-area: main;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 80vw;
+    height: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 /* ***** Fund Length ***** */
@@ -352,8 +369,6 @@ ul {
 }
 /* ***** Calc Container ***** */
 .calculatorContainer {
-    height: 50vh;
-
     display: grid;
     grid-template-columns: 20% 45% 35%;
     grid-template-rows: 100%;
