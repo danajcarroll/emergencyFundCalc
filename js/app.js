@@ -133,18 +133,6 @@ function addComma(number) {
         return splitString.join('');
     }
 }
-let test1 = addComma(10);
-console.log(test1);
-let test2 = addComma(100);
-console.log(test2);
-let test3 = addComma(1000);
-console.log(test3);
-let test5digits = addComma(10000);
-console.log(test5digits);
-let test6 = addComma(100000);
-console.log(test6);
-let test7 = addComma(1000000);
-console.log(test7);
 
 // ********** INPUT CHANGE EVENTS **********
 // When fund length changes
@@ -167,7 +155,7 @@ housingInputList.forEach(input => {
         let newInputs = [];
         // Update all input values and push to sections input array
         housingInputList.forEach(input => {
-            let newInputValue = input.value;
+            let newInputValue = input.value ? input.value : 0;
             let newInputNum = parseInt(newInputValue, 10);
             newInputs.push(newInputNum);
             housingInputs.splice(0, housingInputs.length, ...newInputs);
@@ -183,6 +171,7 @@ housingInputList.forEach(input => {
         console.log(`Housing monthly total = ${housingMonthlyTotal}`);
         console.log(`New overall monthly total = ${monthlyTotal}`);
         chartData.splice(0, 1, housingMonthlyTotal);
+        console.log(chartData);
         myChart.update();
     })
 });
@@ -197,7 +186,7 @@ transportInputList.forEach(input => {
         let newInputs = [];
         // Update all input values and push to sections input array
         transportInputList.forEach(input => {
-            let newInputValue = input.value;
+            let newInputValue = input.value ? input.value : 0;
             let newInputNum = parseInt(newInputValue, 10);
             newInputs.push(newInputNum);
             transportInputs.splice(0, transportInputs.length, ...newInputs);
@@ -213,6 +202,7 @@ transportInputList.forEach(input => {
         console.log(`Transport monthly total = ${transportMonthlyTotal}`);
         console.log(`New overall monthly total = ${monthlyTotal}`);
         chartData.splice(1, 1, transportMonthlyTotal);
+        console.log(chartData);
         myChart.update();
     })
 });
@@ -227,7 +217,7 @@ personalInputList.forEach(input => {
         let newInputs = [];
         // Update all input values and push to sections input array
         personalInputList.forEach(input => {
-            let newInputValue = input.value;
+            let newInputValue = input.value ? input.value : 0;
             let newInputNum = parseInt(newInputValue, 10);
             newInputs.push(newInputNum);
             personalInputs.splice(0, personalInputs.length, ...newInputs);
@@ -243,6 +233,7 @@ personalInputList.forEach(input => {
         console.log(`Personal monthly total = ${personalMonthlyTotal}`);
         console.log(`New overall monthly total = ${monthlyTotal}`);
         chartData.splice(2, 1, personalMonthlyTotal);
+        console.log(chartData);
         myChart.update();
     })
 });
@@ -257,7 +248,7 @@ loanInputList.forEach(input => {
         let newInputs = [];
         // Update all input values and push to sections input array
         loanInputList.forEach(input => {
-            let newInputValue = input.value;
+            let newInputValue = input.value ? input.value : 0;
             let newInputNum = parseInt(newInputValue, 10);
             newInputs.push(newInputNum);
             loanInputs.splice(0, loanInputs.length, ...newInputs);
@@ -273,6 +264,7 @@ loanInputList.forEach(input => {
         console.log(`Loan monthly total = ${loanMonthlyTotal}`);
         console.log(`New overall monthly total = ${monthlyTotal}`);
         chartData.splice(3, 1, loanMonthlyTotal);
+        console.log(chartData);
         myChart.update();
     })
 });
@@ -346,7 +338,8 @@ const myChart = new Chart(ctx, {
                 callbacks: {
                     label: function(context) {
                         let label = context.label;
-                        let value = context.formattedValue;
+                        let value = context.parsed;
+                        // let value = context.formattedValue;
         
                         if (!label)
                             label = 'Unknown'
@@ -357,7 +350,7 @@ const myChart = new Chart(ctx, {
                             sum += Number(data);
                         });
         
-                        let percentage = (value * 100 / sum).toFixed(2) + '%';
+                        let percentage = ((value / sum) * 100).toFixed(2) + '%';
                         return label + ": " + percentage;
                     }
                 }
@@ -372,3 +365,7 @@ const myChart = new Chart(ctx, {
         }
     }
 });
+
+console.log(
+    ((2500 / 3000) * 100).toFixed(2)
+);
