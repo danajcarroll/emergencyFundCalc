@@ -2,7 +2,7 @@
 
 This is a calculator that allows you to create an emergency fund using your monthly expenses.
 
-![FoodFind in Mobile and Desktop](/images/appInDevices.png?raw=true "Apps in Devices")
+![FoodFind in Mobile and Desktop](/appImage.png?raw=true "Apps in Devices")
 
 ## Project Status
 
