@@ -2,7 +2,7 @@
 
 This is a calculator that allows you to create an emergency fund using your monthly expenses.
 
-![FoodFind in Mobile and Desktop](/appImage.png?raw=true "Apps in Devices")
+![Calculator in Mobile and Desktop](/appImage.png?raw=true "Apps in Devices")
 
 ## Project Status
 
@@ -33,3 +33,7 @@ Final Value Display - Fun little thing I did by myself was adding commas between
 ## Live Demo
 
 [Check it out here!](https://danacarroll.com/eCalc)
+
+## Mini Demo
+
+![Emergency Fund Calculator GIF](/eCalc.gif?raw=true "Apps GIF")
