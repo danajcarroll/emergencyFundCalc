@@ -6,7 +6,7 @@ This is a calculator that allows you to create an emergency fund using your mont
 
 ## Project Status
 
-Production is almost finished with this app. I want to add an info box to let users know what an emergency fund is, and how to navigate the app itself.
+Production is finished with this app! Tried some new things with this one and it feels really cool to have an app that I can use in the future.
 
 ## Description
 
