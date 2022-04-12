@@ -16,6 +16,7 @@ What do we need to do?
 // Modal Elements
 const modalButton = document.getElementById('modal-button');
 const modal = document.getElementById('instructions-modal');
+const modalContent = document.getElementById('modal-content');
 const closeModal = document.getElementById('modal-close');
 
 // Category Buttons
@@ -141,14 +142,21 @@ function addComma(number) {
 
 // ********** OPEN / CLOSE MODAL **********
 modalButton.addEventListener('click', () => {
+    modal.classList.remove('shrinkOff');
+    modalContent.classList.remove('offScreen');
     modal.style.display = 'block';
 })
 closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
+    modalContent.classList.add('offScreen');
+    modal.classList.add('shrinkOff');
+    // modal.style.display = 'none';
 })
 window.addEventListener('click', (event) => {
-    if (event.target == modal)
-    modal.style.display = 'none';
+    if (event.target == modal && modal.style.display == 'block') {
+        modalContent.classList.add('offScreen');
+        modal.classList.add('shrinkOff');
+        // modal.style.display = 'none';
+    }
 })
 
 

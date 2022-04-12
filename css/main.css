@@ -64,6 +64,34 @@ main {
     overflow: hidden;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
+    transform: scale(0);
+    animation: growIn 1s forwards;
+}
+.shrinkOff {
+    transform: scale(1);
+    animation: shrinkOff 0.5s forwards 0.5s;
+}
+@keyframes growIn {
+    0% {
+        transform: scaleY(0.005) scaleX(0);
+    }
+    50% {
+        transform: scaleY(0.005) scaleX(1);
+    }
+    100% {
+        transform: scaleY(1) scaleX(1);
+    }
+}
+@keyframes shrinkOff {
+    0% {
+        transform: scaleY(1) scaleX(1);
+    }
+    50% {
+        transform: scaleY(0.005) scaleX(1);
+    }
+    100% {
+        transform: scaleY(0.005) scaleX(0);
+    }
 }
 .modal-content {
     background-color: var(--white);
@@ -71,6 +99,34 @@ main {
     width: 90%;
     padding: 20px;
     border-radius: 10px;
+    transform: scaleX(0);
+    animation: onScreen 1s forwards 0.5s;
+}
+.offScreen {
+    transform: scale(1);
+    animation: offScreen 0.5s forwards;
+}
+@keyframes onScreen {
+    0% {
+        transform: scaleX(0);
+    }
+    50% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+@keyframes offScreen {
+    0% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(0);
+    }
 }
 /* The Close Button */
 .modal-close {
