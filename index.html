@@ -13,10 +13,33 @@
 </head>
 <body>
     <header>
-        <!-- <button>i</button> -->
+        <button id="modal-button">?</button>
         <h1>Emergency Fund Calculator</h1>
     </header>
     <main>
+        <div id="instructions-modal" class="modal">
+            <div class="modal-content">
+                <span id="modal-close" class="modal-close">&times;</span>
+                <div class="modalParagraph">
+                    <h2>What is an emergency fund?</h2>
+                    <p>- An emergency fund is a set of money you set aside for an emergency.</p>
+                    <p>- The amount you save is up to you, but is usually based on your monthly expenses, lasting typically 3 - 6 months</p>
+                    <p>- Eg. If your monthly expenses are $1,600, a 6 month emergency fund would be $9,600</p>
+                </div>
+
+                <div class="modalParagraph">
+                    <h2>How do you use this app?</h1>
+                    <p>- Choose how long you'd like your emergency fund to last (6 default)</p>
+                    <p>- Go through each tab and input how much you spend monthly in each category</p>
+                    <p>- Watch as your emergency fund is calculated before your very eyes!</p>
+                </div>
+
+                <div class="modalParagraph">
+                    <h3>Developer's note</h3>
+                    <p>Dana here! The maker of this app, thanks for checking it out, really hope you enjoy it.</p>
+                </div>
+            </div>
+        </div>
         <div class="fundLength">
             <p>How many months would you like your emergency fund to last?</p>
             <input type="number" id="fundLength" placeholder="6">

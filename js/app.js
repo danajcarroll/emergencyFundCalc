@@ -13,6 +13,11 @@ What do we need to do?
 */
 
 /* ********** VARIABLES ********** */
+// Modal Elements
+const modalButton = document.getElementById('modal-button');
+const modal = document.getElementById('instructions-modal');
+const closeModal = document.getElementById('modal-close');
+
 // Category Buttons
 const tabNodeList = document.getElementsByClassName('categoryTab');
 const allTabButtons = [...tabNodeList];
@@ -133,6 +138,19 @@ function addComma(number) {
         return splitString.join('');
     }
 }
+
+// ********** OPEN / CLOSE MODAL **********
+modalButton.addEventListener('click', () => {
+    modal.style.display = 'block';
+})
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+})
+window.addEventListener('click', (event) => {
+    if (event.target == modal)
+    modal.style.display = 'none';
+})
+
 
 // ********** INPUT CHANGE EVENTS **********
 // When fund length changes
