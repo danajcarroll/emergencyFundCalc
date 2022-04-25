@@ -126,13 +126,11 @@ modalButton.addEventListener('click', () => {
 closeModal.addEventListener('click', () => {
     modalContent.classList.add('offScreen');
     modal.classList.add('shrinkOff');
-    // modal.style.display = 'none';
 })
 window.addEventListener('click', (event) => {
     if (event.target == modal && modal.style.display == 'block') {
         modalContent.classList.add('offScreen');
         modal.classList.add('shrinkOff');
-        // modal.style.display = 'none';
     }
 })
 
@@ -299,7 +297,7 @@ allTabButtons.forEach(button => {
 // ***** Pie Chart *****
 
 function addData(array) {
-    chartData.array.datasets.forEach((datasest) => {
+    chartData.array.datasets.forEach((dataset) => {
         dataset.data.push(array);
     });
     chartData.updata();
@@ -358,6 +356,3 @@ const myChart = new Chart(ctx, {
     }
 });
 
-console.log(
-    ((2500 / 3000) * 100).toFixed(2)
-);
