@@ -1,18 +1,5 @@
 'use strict';
 
-/* 
-EMERGENCY FUND CALCULATOR
-
-What do we need to do?
-1. Set the months the emergency fund is lasting
-2. Set all input values to be 0
-3. Every time an input changes, update that value
-    - turn string to number
-4. Run function to calculate everything again
-
-*/
-
-/* ********** VARIABLES ********** */
 // Modal Elements
 const modalButton = document.getElementById('modal-button');
 const modal = document.getElementById('instructions-modal');
@@ -105,16 +92,6 @@ function updateDisplay() {
     dispLength.innerHTML = addComma(fundLength);
 }
 
-/* 
-1. DONE Take the number - the parameter going into the function
-2. DONE Take the number, break each character into a string, put into array
-3. if there are 1, 2 or 3 strings in the array, join characters back togther, return the number
-4. if there are 4 strings, put comma after 1st string in array, join back together, return number
-5. i fthere are 5 strings, comma after 2nd string, join together, return number
-6. if there are 6 strings, comma after 3rd string, join together, return number
-7. if there are 7 strings, comma after 1ST and 4TH (can this be done at the same time?), join together, return number
-
-*/
 function addComma(number) {
     let string = number.toString();
     let splitString =  string.split('');
@@ -295,15 +272,6 @@ loanInputList.forEach(input => {
     })
 });
 
-// ***** Trying to make dynamic function to update monthly total
-// function updateMonthly(monthlyElement, monthlyTotal, sum) {
-//     monthlyElement.innerHTML = sum;
-//     monthlyTotal = sum;
-//     console.log(monthlyElement);
-//     console.log(monthlyTotal);
-//     console.log(sum);
-// }
-
 
 // ***** Category Tabs *****
 function changeActive(button) {
@@ -327,8 +295,6 @@ allTabButtons.forEach(button => {
         changeActiveInputs(button.id)
     })
 });
-
-
 
 // ***** Pie Chart *****
 
